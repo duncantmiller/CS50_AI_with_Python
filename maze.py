@@ -107,12 +107,15 @@ class Maze():
                 result.append((action, (r, c)))
         return result
 
-    def solve(self):
+    def solve(self, algorithm):
         """Finds a solution to the maze if one exists"""
         self.num_explored = 0
 
         start = Node(state=self.start, parent=None, action=None)
-        frontier = StackFrontier()
+        if algorithm == "DFS":
+            frontier = StackFrontier()
+        else:
+            frontier = QueueFrontier()
         frontier.add(start)
 
         self.explored = set()
@@ -148,8 +151,13 @@ class Maze():
 m = Maze(sys.argv[1])
 print("Maze:")
 m.print()
-print("Solving...")
-m.solve()
+print("Solving with depth first search...")
+m.solve("DFS")
+print("States Explored:", m.num_explored)
+print("Solution:")
+m.print()
+print("Solving with breadth first search...")
+m.solve("BFS")
 print("States Explored:", m.num_explored)
 print("Solution:")
 m.print()
