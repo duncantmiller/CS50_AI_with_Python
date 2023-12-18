@@ -32,3 +32,4 @@ knowledge = And(
 )
 
 print(knowledge.formula())
+check_knowledge(knowledge)
