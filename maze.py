@@ -42,7 +42,11 @@ class Maze():
     def __init__(self, filename):
 
         with open(filename) as file:
-            pass
+            contents = file.read()
+
+    contents = contents.splitlines()
+    self.height = len(contents)
+    self.width = max(len(line) for line in contents)
 
     def neighbors(self, state):
         row, col = state
