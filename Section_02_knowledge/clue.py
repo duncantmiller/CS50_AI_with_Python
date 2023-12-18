@@ -31,5 +31,8 @@ knowledge = And(
     Or(knife, revolver, wrench)
 )
 
-print(knowledge.formula())
+knowledge.add(Not(mustard))
+knowledge.add(Not(kitchen))
+knowledge.add(Not(revolver))
+
 check_knowledge(knowledge)
