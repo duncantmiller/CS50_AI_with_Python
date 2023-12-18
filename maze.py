@@ -44,6 +44,20 @@ class Maze():
         with open(filename) as file:
             pass
 
+    def neighbors(self, state):
+        row, col = state
+        candidates = [
+            ("up", (row -1, col)),
+            ("down", (row + 1, col)),
+            ("left", (row, col - 1)),
+            ("right", (row, col + 1))
+        ]
+
+        result = []
+        for action, (r, c) in candidates:
+            if 0 <= r < self.height and 0 <= c < self.width and not self.walls[r][c]:
+                result.append((action, (r, c)))
+
     def solve(self):
         """Finds a solution to the maze if one exists"""
         self.num_explored = 0
