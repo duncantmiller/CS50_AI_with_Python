@@ -44,30 +44,32 @@ class Maze():
         with open(filename) as file:
             contents = file.read()
 
-    if contents.count("A") != 1:
-        raise Exception("maze must have exactly one start point")
-    if contents.count("B") != 1:
-        raise Exception("maze must have exactly one goal")
+        if contents.count("A") != 1:
+            raise Exception("maze must have exactly one start point")
+        if contents.count("B") != 1:
+            raise Exception("maze must have exactly one goal")
 
-    contents = contents.splitlines()
-    self.height = len(contents)
-    self.width = max(len(line) for line in contents)
+        contents = contents.splitlines()
+        self.height = len(contents)
+        self.width = max(len(line) for line in contents)
 
-    self.walls = []
-    for i in range(self.height):
-        row = []
-        for j in range(self.width):
-            try:
-                if contents[i][j] == "A":
-                    self.start = (i, j)
+        self.walls = []
+        for i in range(self.height):
+            row = []
+            for j in range(self.width):
+                try:
+                    if contents[i][j] == "A":
+                        self.start = (i, j)
+                        row.append(False)
+                    elif contents[i][j] == "B":
+                        self.goal = (i, j)
+                        row.append(False)
+                    elif contents[i][j] == " ":
+                        row.append(False)
+                    else:
+                        row.append(True)
+                except IndexError:
                     row.append(False)
-                elif contents[i][j] == "B":
-                    self.goal = (i, j)
-                    row.append(False)
-                elif contents[i][j] = " ":
-                    row.append(False)
-                else:
-                    row.append(True)
             self.walls.append(row)
 
         self.solution = None
