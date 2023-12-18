@@ -24,3 +24,9 @@ def check_knowledge(knowledge):
             termcolor.cprint(f"{symbol}: YES", "green")
         elif not model_check(knowledge, Not(symbol)):
             print(f"{symbol}: MAYBE")
+
+knowledge = And(
+    Or(mustard, plum, scarlet),
+    Or(ballroom, kitchen, library),
+    Or(knife, revolver, wrench)
+)
