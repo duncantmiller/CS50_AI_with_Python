@@ -15,3 +15,5 @@ knowledge = And(
     Not(And(hagrid, dumbledore)),
     dumbledore
 )
+
+print(knowledge.formula())
