@@ -1,3 +1,4 @@
+import termcolor
 from logic import *
 
 mustard = Symbol("ColMustard")
@@ -16,3 +17,10 @@ wrench = Symbol("wrench")
 weapons = [knife, revolver, wrench]
 
 symbols = characters + rooms + weapons
+
+def check_knowledge(knowledge):
+    for symbol in symbols:
+        if model_check(knowledge, symbol):
+            termcolor.cprint(f"{symbol}: YES", "green")
+        elif not model_check(knowledge, Not(symbol)):
+            print(f"{symbol}: MAYBE")
