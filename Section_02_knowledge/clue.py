@@ -30,3 +30,5 @@ knowledge = And(
     Or(ballroom, kitchen, library),
     Or(knife, revolver, wrench)
 )
+
+print(knowledge.formula())
