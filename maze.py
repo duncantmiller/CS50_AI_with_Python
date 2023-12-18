@@ -44,6 +44,11 @@ class Maze():
         with open(filename) as file:
             contents = file.read()
 
+    if contents.count("A") != 1:
+        raise Exception("maze must have exactly one start point")
+    if contents.count("B") != 1:
+        raise Exception("maze must have exactly one goal")
+
     contents = contents.splitlines()
     self.height = len(contents)
     self.width = max(len(line) for line in contents)
