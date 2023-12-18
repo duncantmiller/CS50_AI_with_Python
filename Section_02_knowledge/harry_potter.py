@@ -5,7 +5,8 @@ from logic import *
 # Harry did not visit both
 # Harry visited Dumbledore
 
-harry = Symbol("harry")
+
+rain = Symbol("rain")
 hagrid = Symbol("hagrid") # Harry visited Hagrid
 dumbledore = Symbol("dumbledore") # Harry visited Dumbledore
 
