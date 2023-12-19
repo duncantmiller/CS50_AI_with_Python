@@ -95,16 +95,68 @@ def shortest_path(source, target):
     target_id = target
     source_id = source
     target_movie_ids = people[target_id]['movies']
-    source_movie_ids = people[source]['movies']
+    source_movie_ids = people[source_id]['movies']
+    explored_person_ids = []
+
+    start_node = Node(state=source_id, parent=None, action=None)
+    frontier = StackFrontier()
+    frontier.add(start_node)
+
+    while True:
+        if frontier.empty():
+            return None
+        node = frontier.remove()
+
+        path = in_same_movie(node.state, target_id)
+        if path is not None:
+            node.action = path
+
+        if node.state == target_id:
+            actions = []
+
+            while node.parent is not None:
+                actions.append(node.action)
+                node = node.parent
+            actions.reverse()
+
+            return actions
+        explored_person_ids.append(node.state)
+
+        for state in neighbor_movie_people(node.state):
+            if not frontier.contains_state(state) and state not in explored_person_ids:
+                child = Node(state=state, parent=node, action=None)
+                frontier.add(child)
+
+
+    # path = in_same_movie(source_id, target_id)
+    # if path is None:
+    #     for source_movie_id in source_movie_ids:
+    #         star_ids = movies[source_movie_id]["stars"]
+    #         for star_id in star_ids:
+    #             path = in_same_movie(star_id, target_id)
+    #             if path is not None:
+    #                 return [(source_movie_id, star_id)] + path
+    #             else:
+    #                 shortest_path(star_id, target_id)
+    # else:
+    #     return path
+
+def neighbor_movie_people(state):
+    result = []
+    movie_ids = people[state]['movies']
+    for movie_id in movie_ids:
+        for person_id in movies[movie_id]['stars']:
+            if person_id != state:
+                result.append(person_id)
+    return result
+
+def in_same_movie(source_id, target_id):
+    source_movie_ids = people[source_id]['movies']
+    target_movie_ids = people[target_id]['movies']
     for source_movie_id in source_movie_ids:
         if source_movie_id in target_movie_ids:
-            return [(source_movie_id, target_id)]
-    for source_movie_id in source_movie_ids:
-        star_ids = movies[source_movie_id]["stars"]
-        for star_id in star_ids:
-            for star_movie_id in people[star_id]["movies"]:
-                if star_movie_id in target_movie_ids:
-                    return [(source_movie_id, star_id), (star_movie_id, target_id)]
+            return (source_movie_id, target_id)
+    return None
 
 
 def person_id_for_name(name):
