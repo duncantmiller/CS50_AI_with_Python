@@ -144,5 +144,10 @@ class TestPlayerFunction(unittest.TestCase):
                  ["X", "O", "X"]]
         self.assertEqual(minimax(board), None)
 
+    def test_minimax_for_simple_win(self):
+        board = [["X", "O", "X",],
+                 ["O", EMPTY, "O"],
+                 ["X", "O", "X"]]
+        self.assertEqual(minimax(board), (1, 1))
 if __name__ == '__main__':
     unittest.main()
