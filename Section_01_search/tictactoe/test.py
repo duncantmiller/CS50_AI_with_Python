@@ -19,21 +19,21 @@ class TestPlayerFunction(unittest.TestCase):
         board = [[EMPTY, EMPTY, EMPTY],
                  [EMPTY, EMPTY, EMPTY],
                  [EMPTY, EMPTY, EMPTY]]
-        self.assertEqual(actions(board), ((0, 0), (0, 1), (0, 2),
+        self.assertEqual(actions(board), {(0, 0), (0, 1), (0, 2),
                                           (1, 0), (1, 1), (1, 2),
-                                          (2, 0), (2, 1), (2, 2)))
+                                          (2, 0), (2, 1), (2, 2)})
 
     def test_actions_for_one(self):
         board = [["X", "O", "X",],
                  ["O", EMPTY, "O"],
                  ["X", "O", "X"]]
-        self.assertEqual(actions(board), ((1, 1),))
+        self.assertEqual(actions(board), {(1, 1),})
 
     def test_actions_for_two(self):
         board = [[EMPTY, "O", "X",],
                  ["O", EMPTY, "O"],
                  ["X", "O", "X"]]
-        self.assertEqual(actions(board), ((0, 0), (1, 1),))
+        self.assertEqual(actions(board), {(0, 0), (1, 1),})
 
     def test_result(self):
         board = [[EMPTY, "O", "X",],
