@@ -44,5 +44,13 @@ class TestPlayerFunction(unittest.TestCase):
                                                  ["O", EMPTY, "O"],
                                                  ["X", "O", "X"]])
 
+    def test_result_exception_for_taken_coord(self):
+        board = [[EMPTY, "O", "X",],
+                 ["O", EMPTY, "O"],
+                 ["X", "O", "X"]]
+        action = (0, 1)
+        with self.assertRaises(Exception):
+            result(board, action)
+
 if __name__ == '__main__':
     unittest.main()
