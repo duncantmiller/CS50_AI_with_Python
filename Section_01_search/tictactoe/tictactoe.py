@@ -138,3 +138,26 @@ def minimax(board):
     """
     if terminal(board):
         return None
+    player_letter = player(board)
+    if player_letter == "X":
+        for action in actions(board):
+            if max_value(result(board, action)) == 1:
+                return action
+    if player_letter == "O":
+        pass
+
+def max_value(board):
+    if terminal(board):
+        return utility(board)
+    max_v = float("-inf")
+    for action in actions(board):
+        max_v = max(max_v, min_value(result(board, action)))
+    return max_v
+
+def min_value(board):
+    if terminal(board):
+        return utility(board)
+    min_v = float("inf")
+    for action in actions(board):
+        min_v = min(min_v, max_value(result(board, action)))
+    return min_v
