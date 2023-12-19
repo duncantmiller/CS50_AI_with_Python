@@ -107,18 +107,19 @@ def shortest_path(source, target):
             return None
         node = frontier.remove()
 
-        path = in_same_movie(node.state, target_id)
-        if path is not None:
-            node.action = path
+        if node.parent is None:
+            node.action = in_same_movie(node.state, target_id)
+        else:
+            node.action = in_same_movie(node.state, node.parent.state)
 
         if node.state == target_id:
-            actions = []
+            relationships = []
 
             while node.parent is not None and node.action is not None:
-                actions.append(node.action)
+                relationships.append((node.action, node.state))
                 node = node.parent
-            actions.reverse()
-            return actions
+            relationships.reverse()
+            return relationships
         explored_person_ids.append(node.state)
 
         for state in neighbor_movie_people(node.state):
@@ -154,7 +155,7 @@ def in_same_movie(source_id, target_id):
     target_movie_ids = people[target_id]['movies']
     for source_movie_id in source_movie_ids:
         if source_movie_id in target_movie_ids:
-            return (source_movie_id, target_id)
+            return source_movie_id
     return None
 
 
