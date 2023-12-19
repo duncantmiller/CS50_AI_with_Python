@@ -48,6 +48,8 @@ def result(board, action):
     """
     Returns the board that results from making move (i, j) on the board.
     """
+    if action[0] > 2 or action[1] > 2 or action[0] < 0 or action[1] < 0:
+        raise Exception("Invalid action")
     for row_idx, row in enumerate(board):
         for col_idx, col in enumerate(row):
             if (row_idx, col_idx) == action:
