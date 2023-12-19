@@ -7,7 +7,7 @@ import math
 X = "X"
 O = "O"
 EMPTY = None
-
+next_player = ""
 
 def initial_state():
     """
@@ -22,8 +22,12 @@ def player(board):
     """
     Returns player who has the next turn on a board.
     """
-    raise NotImplementedError
-
+    global next_player
+    if next_player == "X":
+        next_player = "O"
+    else:
+        next_player = "X"
+    return next_player
 
 def actions(board):
     """
