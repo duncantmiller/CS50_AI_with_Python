@@ -52,5 +52,13 @@ class TestPlayerFunction(unittest.TestCase):
         with self.assertRaises(Exception):
             result(board, action)
 
+    def test_result_exception_for_invalid_coord(self):
+        board = [[EMPTY, "O", "X",],
+                 ["O", EMPTY, "O"],
+                 ["X", "O", "X"]]
+        action = (9, 9)
+        with self.assertRaises(Exception):
+            result(board, action)
+
 if __name__ == '__main__':
     unittest.main()
