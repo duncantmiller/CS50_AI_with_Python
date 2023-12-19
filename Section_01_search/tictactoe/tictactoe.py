@@ -66,8 +66,18 @@ def winner(board):
     """
     Returns the winner of the game, if there is one.
     """
-    raise NotImplementedError
-
+    winner = None
+    for row_idx, row in enumerate(board):
+        if row == ["X", "X", "X"]:
+            winner = "X"
+        elif row == ["O", "O", "O"]:
+            winner = "O"
+        for col_idx, col in enumerate(row):
+            if col == ["X", "X", "X"]:
+                winner = "X"
+            elif col == ["O", "O", "O"]:
+                winner = "O"
+    return winner
 
 def terminal(board):
     """
