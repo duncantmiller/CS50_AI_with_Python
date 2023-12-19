@@ -162,5 +162,17 @@ class TestPlayerFunction(unittest.TestCase):
                  [EMPTY, EMPTY, EMPTY]]
         self.assertEqual(minimax(board), (1, 1))
 
+    def test_minimax_for_mid_win(self):
+        board = [[EMPTY, "O", "O"],
+                 ["X", "X", EMPTY],
+                 [EMPTY, EMPTY, EMPTY]]
+        self.assertEqual(minimax(board), (1, 2))
+
+    def test_minimax_for_mid_defense(self):
+        board = [[EMPTY, "O", "O"],
+                 [EMPTY, "X", EMPTY],
+                 [EMPTY, "X", EMPTY]]
+        self.assertEqual(minimax(board), (0, 0))
+
 if __name__ == '__main__':
     unittest.main()
