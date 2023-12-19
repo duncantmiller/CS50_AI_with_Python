@@ -143,7 +143,9 @@ def minimax(board):
         for action in actions(board):
             if max_value(result(board, action)) == 1:
                 return action
-
+        for action in actions(board):
+            if max_value(result(board, action)) == 0:
+                return action
 def max_value(board):
     """
     Returns the max value of the board.
