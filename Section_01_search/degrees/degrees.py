@@ -84,15 +84,13 @@ def main():
             print(f"{i + 1}: {person1} and {person2} starred in {movie}")
 
 
-def shortest_path(source, target):
+def shortest_path(source_id, target_id):
     """
     Returns the shortest list of (movie_id, person_id) pairs
     that connect the source to the target.
 
     If no possible path, returns None.
     """
-    target_id = target
-    source_id = source
     explored_person_ids = []
 
     start_node = Node(state=source_id, parent=None, action=None)
