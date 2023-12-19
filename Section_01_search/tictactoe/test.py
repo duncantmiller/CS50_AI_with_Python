@@ -174,5 +174,11 @@ class TestPlayerFunction(unittest.TestCase):
                  [EMPTY, "X", EMPTY]]
         self.assertEqual(minimax(board), (0, 0))
 
+    def test_minimax_for_third_move(self):
+        board = [[EMPTY, EMPTY, "O"],
+                 [EMPTY, "X", EMPTY],
+                 [EMPTY, EMPTY, EMPTY]]
+        self.assertEqual(minimax(board), (0, 0))
+
 if __name__ == '__main__':
     unittest.main()
