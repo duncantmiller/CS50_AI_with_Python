@@ -66,12 +66,7 @@ def winner(board):
     """
     Returns the winner of the game, if there is one.
     """
-    winner_letter = None
-    for row in board:
-        if row == ["X", "X", "X"]:
-            winner_letter = "X"
-        elif row == ["O", "O", "O"]:
-            winner_letter = "O"
+    winner_letter = horizontal_winner(board, None)
     first_column = [row[0] for row in board]
     second_column = [row[1] for row in board]
     third_column = [row[2] for row in board]
@@ -86,6 +81,17 @@ def winner(board):
     elif (diagonal1 or diagonal2) == ["O", "O", "O"]:
         winner_letter = "O"
 
+    return winner_letter
+
+def horizontal_winner(board, winner_letter):
+    """
+    Returns the winner of the game, if there is one.
+    """
+    for row in board:
+        if row == ["X", "X", "X"]:
+            winner_letter = "X"
+        elif row == ["O", "O", "O"]:
+            winner_letter = "O"
     return winner_letter
 
 def terminal(board):
