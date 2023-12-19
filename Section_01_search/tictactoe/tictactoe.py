@@ -29,10 +29,7 @@ def player(board):
                 x_count += 1
             elif col == "O":
                 o_count += 1
-    if o_count >= x_count:
-        next_player = "X"
-    else:
-        next_player = "O"
+    next_player = "X" if o_count >= x_count else "O"
     return next_player
 
 def actions(board):
