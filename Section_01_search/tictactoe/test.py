@@ -78,6 +78,12 @@ class TestPlayerFunction(unittest.TestCase):
                  ["X", "O", "X"]]
         self.assertEqual(winner(board), None)
 
+    def test_winner_for_tie(self):
+        board = [["O", "X", "O",],
+                 ["O", "X", "X"],
+                 ["X", "O", "X"]]
+        self.assertEqual(winner(board), None)
+
     def test_winner_for_row(self):
         board = [["X", "X", "X",],
                  ["O", EMPTY, "O"],
@@ -105,6 +111,12 @@ class TestPlayerFunction(unittest.TestCase):
     def test_terminal_for_winner(self):
         board = [["X", "O", "X",],
                  ["O", "X", "O"],
+                 ["X", "O", "X"]]
+        self.assertTrue(terminal(board))
+
+    def test_terminal_for_tie(self):
+        board = [["O", "X", "O",],
+                 ["O", "X", "X"],
                  ["X", "O", "X"]]
         self.assertTrue(terminal(board))
 
