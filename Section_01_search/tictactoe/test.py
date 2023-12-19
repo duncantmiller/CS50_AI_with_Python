@@ -149,5 +149,12 @@ class TestPlayerFunction(unittest.TestCase):
                  ["O", EMPTY, "O"],
                  ["X", "O", "X"]]
         self.assertEqual(minimax(board), (1, 1))
+
+    def test_minimax_for_simple_tie(self):
+        board = [["X", "O", "X",],
+                 [EMPTY, "O", "O"],
+                 ["O", "X", "X"]]
+        self.assertEqual(minimax(board), (1, 0))
+
 if __name__ == '__main__':
     unittest.main()

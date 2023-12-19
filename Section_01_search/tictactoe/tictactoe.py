@@ -143,10 +143,11 @@ def minimax(board):
         for action in actions(board):
             if max_value(result(board, action)) == 1:
                 return action
-    if player_letter == "O":
-        pass
 
 def max_value(board):
+    """
+    Returns the max value of the board.
+    """
     if terminal(board):
         return utility(board)
     max_v = float("-inf")
@@ -155,6 +156,10 @@ def max_value(board):
     return max_v
 
 def min_value(board):
+    """
+    Returns the min value of the board.
+    This is the value that the opponent will get.
+    """
     if terminal(board):
         return utility(board)
     min_v = float("inf")
