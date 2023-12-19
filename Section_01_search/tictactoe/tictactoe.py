@@ -67,7 +67,7 @@ def winner(board):
     Returns the winner of the game, if there is one.
     """
     winner_letter = None
-    for row_idx, row in enumerate(board):
+    for row in board:
         if row == ["X", "X", "X"]:
             winner_letter = "X"
         elif row == ["O", "O", "O"]:
