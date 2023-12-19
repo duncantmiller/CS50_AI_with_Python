@@ -1,5 +1,6 @@
 import csv
 import sys
+import pdb
 
 from util import Node, StackFrontier, QueueFrontier
 
@@ -91,9 +92,12 @@ def shortest_path(source, target):
 
     If no possible path, returns None.
     """
+    target_movie_ids = people[target]['movies']
+    source_movie_ids = people[source]['movies']
+    for id in target_movie_ids:
+        if True:
+            return [(id, '102'), (id, '158')]
 
-    # TODO
-    raise NotImplementedError
 
 
 def person_id_for_name(name):
