@@ -102,5 +102,11 @@ class TestPlayerFunction(unittest.TestCase):
                  ["X", "O", "X"]]
         self.assertFalse(terminal(board))
 
+    def test_terminal_for_winner(self):
+        board = [["X", "O", "X",],
+                 ["O", "X", "O"],
+                 ["X", "O", "X"]]
+        self.assertTrue(terminal(board))
+
 if __name__ == '__main__':
     unittest.main()
