@@ -1,6 +1,5 @@
 import csv
 import sys
-import pdb
 
 from util import Node, StackFrontier, QueueFrontier
 
@@ -126,6 +125,7 @@ def shortest_path(source, target):
                 frontier.add(child)
 
 def neighbor_movie_people(state):
+    """returns all the people that are in movies with the state person"""
     result = []
     movie_ids = people[state]['movies']
     for movie_id in movie_ids:
@@ -135,6 +135,7 @@ def neighbor_movie_people(state):
     return result
 
 def in_same_movie(source_id, target_id):
+    """returns the movie id if the two people are in the same move otherwise returns None"""
     source_movie_ids = people[source_id]['movies']
     target_movie_ids = people[target_id]['movies']
     for source_movie_id in source_movie_ids:
