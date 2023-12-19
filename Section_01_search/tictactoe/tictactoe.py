@@ -7,7 +7,6 @@ import math
 X = "X"
 O = "O"
 EMPTY = None
-next_player = ""
 
 def initial_state():
     """
@@ -22,11 +21,18 @@ def player(board):
     """
     Returns player who has the next turn on a board.
     """
-    global next_player
-    if next_player == "X":
-        next_player = "O"
-    else:
+    x_count = 0
+    o_count = 0
+    for row in board:
+        for col in row:
+            if col == "X":
+                x_count += 1
+            elif col == "O":
+                o_count += 1
+    if o_count >= x_count:
         next_player = "X"
+    else:
+        next_player = "O"
     return next_player
 
 def actions(board):
