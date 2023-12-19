@@ -157,7 +157,8 @@ def minimax(board):
                 max_val = False
         if max_val:
             max_values[max_value(result_board)] = x_action
-
+    if len(max_values) == 0:
+        return actions(board).pop()
     highest_value = max(max_values.keys())
     return max_values[highest_value]
 
