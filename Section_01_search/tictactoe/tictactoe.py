@@ -142,19 +142,21 @@ def minimax(board):
     player_action = ()
     if player_letter == "X":
         for x_action in actions(board):
-            if max_value(result(board, x_action)) == 1:
+            result_board = result(board, x_action)
+            if max_value(result_board) == 1:
                 player_action = x_action
-                if terminal(result(board, x_action)):
+                if terminal(result_board):
                     return player_action
-                for o_action in actions(result(board, x_action)):
+                for o_action in actions(result_board):
                     if min_value(result(board, o_action)) == 1:
                         player_action = ()
             if player_action != ():
                 return player_action
         for x_action in actions(board):
-            if max_value(result(board, x_action)) == 0:
+            result_board = result(board, x_action)
+            if max_value(result_board) == 0:
                 player_action = x_action
-                for o_action in actions(result(board, x_action)):
+                for o_action in actions(result_board):
                     if min_value(result(board, o_action)) == 1:
                         player_action = ()
             if player_action != ():
