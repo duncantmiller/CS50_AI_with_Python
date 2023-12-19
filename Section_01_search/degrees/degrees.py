@@ -94,8 +94,6 @@ def shortest_path(source, target):
     """
     target_id = target
     source_id = source
-    target_movie_ids = people[target_id]['movies']
-    source_movie_ids = people[source_id]['movies']
     explored_person_ids = []
 
     start_node = Node(state=source_id, parent=None, action=None)
@@ -126,20 +124,6 @@ def shortest_path(source, target):
             if not frontier.contains_state(state) and state not in explored_person_ids:
                 child = Node(state=state, parent=node, action=None)
                 frontier.add(child)
-
-
-    # path = in_same_movie(source_id, target_id)
-    # if path is None:
-    #     for source_movie_id in source_movie_ids:
-    #         star_ids = movies[source_movie_id]["stars"]
-    #         for star_id in star_ids:
-    #             path = in_same_movie(star_id, target_id)
-    #             if path is not None:
-    #                 return [(source_movie_id, star_id)] + path
-    #             else:
-    #                 shortest_path(star_id, target_id)
-    # else:
-    #     return path
 
 def neighbor_movie_people(state):
     result = []
