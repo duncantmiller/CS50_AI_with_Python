@@ -114,11 +114,10 @@ def shortest_path(source, target):
         if node.state == target_id:
             actions = []
 
-            while node.parent is not None:
+            while node.parent is not None and node.action is not None:
                 actions.append(node.action)
                 node = node.parent
             actions.reverse()
-
             return actions
         explored_person_ids.append(node.state)
 
