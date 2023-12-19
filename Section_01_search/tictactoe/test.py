@@ -90,17 +90,35 @@ class TestPlayerFunction(unittest.TestCase):
                  ["X", "O", "X"]]
         self.assertEqual(winner(board), "X")
 
+    def test_winner_for_row1(self):
+        board = [["X", EMPTY, "X",],
+                 ["O", "X", "O"],
+                 ["X", "O", "X"]]
+        self.assertEqual(winner(board), "X")
+
     def test_winner_for_column(self):
         board = [["O", "O", "X",],
                  ["O", EMPTY, "O"],
                  ["O", "O", "X"]]
         self.assertEqual(winner(board), "O")
 
-    def test_winner_for_diagonal(self):
-        board = [["X", "O", "X",],
+    def test_winner_for_column1(self):
+        board = [["O", "O", "X",],
+                 [EMPTY, "O", "O"],
+                 ["O", "O", "X"]]
+        self.assertEqual(winner(board), "O")
+
+    def test_winner_for_diagonal1(self):
+        board = [["X", EMPTY, EMPTY,],
                  ["O", "X", "O"],
-                 ["X", "O", "X"]]
+                 [EMPTY, "O", "X"]]
         self.assertEqual(winner(board), "X")
+
+    def test_winner_for_diagonal2(self):
+        board = [[EMPTY, EMPTY, "O",],
+                 ["X", "O", "X"],
+                 ["O", "X", EMPTY]]
+        self.assertEqual(winner(board), "O")
 
     def test_terminal_for_empty(self):
         board = [[EMPTY, "O", "X",],

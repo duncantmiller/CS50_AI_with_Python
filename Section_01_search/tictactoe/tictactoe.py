@@ -78,9 +78,9 @@ def diagonal_winner(board, winner_letter):
     """
     diagonal1 = [board[0][0], board[1][1], board[2][2]]
     diagonal2 = [board[0][2], board[1][1], board[2][0]]
-    if (diagonal1 or diagonal2) == ["X", "X", "X"]:
+    if diagonal1 == ["X", "X", "X"] or diagonal2 == ["X", "X", "X"]:
         winner_letter = "X"
-    elif (diagonal1 or diagonal2) == ["O", "O", "O"]:
+    elif diagonal1 == ["O", "O", "O"] or diagonal2 == ["O", "O", "O"]:
         winner_letter = "O"
     return winner_letter
 
@@ -91,9 +91,17 @@ def vertical_winner(board, winner_letter):
     first_column = [row[0] for row in board]
     second_column = [row[1] for row in board]
     third_column = [row[2] for row in board]
-    if (first_column or second_column or third_column) == ["X", "X", "X"]:
+    if first_column == ["X", "X", "X"]:
         winner_letter = "X"
-    elif (first_column or second_column or third_column) == ["O", "O", "O"]:
+    elif second_column == ["X", "X", "X"]:
+        winner_letter = "X"
+    elif third_column == ["X", "X", "X"]:
+        winner_letter = "X"
+    elif first_column == ["O", "O", "O"]:
+        winner_letter = "O"
+    elif second_column == ["O", "O", "O"]:
+        winner_letter = "O"
+    elif third_column == ["O", "O", "O"]:
         winner_letter = "O"
     return winner_letter
 
@@ -152,35 +160,6 @@ def minimax(board):
 
     highest_value = max(max_values.keys())
     return max_values[highest_value]
-
-    # player_action = ()
-    # for x_action in actions(board):
-    #     result_board = result(board, x_action)
-    #     if max_value(result_board) == 1:
-    #         player_action = x_action
-    #         if terminal(result_board):
-    #             return player_action
-    #         for o_action in actions(result_board):
-    #             if min_value(result(board, o_action)) == 1:
-    #                 player_action = ()
-    #     if player_action != ():
-    #         return player_action
-    # for x_action in actions(board):
-    #     result_board = result(board, x_action)
-    #     if max_value(result_board) == 0:
-    #         player_action = x_action
-    #         for o_action in actions(result_board):
-    #             if min_value(result(board, o_action)) == 1:
-    #                 player_action = ()
-    #     if player_action != ():
-    #         return player_action
-    # for x_action in actions(board):
-    #     player_action = x_action
-    #     for o_action in actions(result(board, x_action)):
-    #         if min_value(result(result(board, x_action), o_action)) == 1:
-    #             player_action = ()
-    #     if player_action != ():
-    #         return player_action
 
 def max_value(board):
     """
