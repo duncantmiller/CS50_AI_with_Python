@@ -198,5 +198,11 @@ class TestPlayerFunction(unittest.TestCase):
                  [EMPTY, EMPTY, EMPTY]]
         self.assertNotEqual(minimax(board), None)
 
+    def test_minimax_for_game(self):
+        board = [["X", "O", "X"],
+                 ["O", "X", EMPTY],
+                 [EMPTY, EMPTY, EMPTY]]
+        self.assertNotEqual(minimax(board), None)
+
 if __name__ == '__main__':
     unittest.main()
