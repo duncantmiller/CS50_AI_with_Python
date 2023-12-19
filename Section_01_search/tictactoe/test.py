@@ -132,5 +132,11 @@ class TestPlayerFunction(unittest.TestCase):
                  ["O", "O", "X"]]
         self.assertEqual(utility(board), -1)
 
+    def test_utility_for_tie(self):
+        board = [["O", "X", "O",],
+                 ["O", "X", "X"],
+                 ["X", "O", "X"]]
+        self.assertEqual(utility(board), 0)
+
 if __name__ == '__main__':
     unittest.main()
