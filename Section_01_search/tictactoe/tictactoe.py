@@ -118,6 +118,7 @@ def terminal(board):
         for col in row:
             if col == EMPTY:
                 return False
+    return True
 
 def utility(board):
     """
