@@ -66,18 +66,21 @@ def winner(board):
     """
     Returns the winner of the game, if there is one.
     """
-    winner = None
+    winner_letter = None
     for row_idx, row in enumerate(board):
         if row == ["X", "X", "X"]:
-            winner = "X"
+            winner_letter = "X"
         elif row == ["O", "O", "O"]:
-            winner = "O"
-        for col_idx, col in enumerate(row):
-            if col == ["X", "X", "X"]:
-                winner = "X"
-            elif col == ["O", "O", "O"]:
-                winner = "O"
-    return winner
+            winner_letter = "O"
+    first_column = [row[0] for row in board]
+    second_column = [row[1] for row in board]
+    third_column = [row[2] for row in board]
+    if (first_column or second_column or third_column) == ["X", "X", "X"]:
+        winner_letter = "X"
+    elif (first_column or second_column or third_column) == ["O", "O", "O"]:
+        winner_letter = "O"
+
+    return winner_letter
 
 def terminal(board):
     """

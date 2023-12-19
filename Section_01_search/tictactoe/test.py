@@ -88,7 +88,7 @@ class TestPlayerFunction(unittest.TestCase):
         board = [["O", "O", "X",],
                  ["O", EMPTY, "O"],
                  ["O", "O", "X"]]
-        self.assertEqual(winner(board), "0")
+        self.assertEqual(winner(board), "O")
 
     def test_winner_for_diagonal(self):
         board = [["X", "O", "X",],
