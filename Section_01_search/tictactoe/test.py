@@ -126,5 +126,11 @@ class TestPlayerFunction(unittest.TestCase):
                  ["X", "O", "X"]]
         self.assertEqual(utility(board), 1)
 
+    def test_utility_for_o(self):
+        board = [["O", "O", "X",],
+                 ["O", EMPTY, "O"],
+                 ["O", "O", "X"]]
+        self.assertEqual(utility(board), -1)
+
 if __name__ == '__main__':
     unittest.main()

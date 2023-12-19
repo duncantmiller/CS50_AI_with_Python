@@ -127,6 +127,8 @@ def utility(board):
     score = 0
     if winner(board) == "X":
         score = 1
+    elif winner(board) == "O":
+        score = -1
     return score
 
 
