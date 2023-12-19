@@ -4,6 +4,7 @@ Tic Tac Toe Player
 
 import math
 import pdb
+import copy
 
 X = "X"
 O = "O"
@@ -48,16 +49,17 @@ def result(board, action):
     """
     Returns the board that results from making move (i, j) on the board.
     """
+    new_board = copy.deepcopy(board)
     if action[0] > 2 or action[1] > 2 or action[0] < 0 or action[1] < 0:
         raise Exception("Invalid action")
     for row_idx, row in enumerate(board):
         for col_idx, col in enumerate(row):
             if (row_idx, col_idx) == action:
                 if col == EMPTY:
-                    board[row_idx][col_idx] = player(board)
+                    new_board[row_idx][col_idx] = player(board)
                 else:
                     raise Exception("Invalid action")
-    return board
+    return new_board
 
 
 def winner(board):
