@@ -95,9 +95,8 @@ def shortest_path(source, target):
     target_movie_ids = people[target]['movies']
     source_movie_ids = people[source]['movies']
     for id in target_movie_ids:
-        if True:
-            return [(id, '102'), (id, '158')]
-
+        if id in source_movie_ids:
+            return [(id, target), (id, source)]
 
 
 def person_id_for_name(name):
