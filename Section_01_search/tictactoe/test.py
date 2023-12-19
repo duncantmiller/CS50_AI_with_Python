@@ -60,5 +60,16 @@ class TestPlayerFunction(unittest.TestCase):
         with self.assertRaises(Exception):
             result(board, action)
 
+    def test_result_should_not_change_original_board(self):
+        board = [[EMPTY, "O", "X",],
+                 ["O", EMPTY, "O"],
+                 ["X", "O", "X"]]
+        action = (0, 0)
+        self.assertEqual(result(board, action), [["X", "O", "X",],
+                                                 ["O", EMPTY, "O"],
+                                                 ["X", "O", "X"]])
+        self.assertEqual(board, [[EMPTY, "O", "X",],
+                                 ["O", EMPTY, "O"],
+                                 ["X", "O", "X"]])
 if __name__ == '__main__':
     unittest.main()
