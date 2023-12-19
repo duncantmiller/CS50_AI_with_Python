@@ -71,5 +71,12 @@ class TestPlayerFunction(unittest.TestCase):
         self.assertEqual(board, [[EMPTY, "O", "X",],
                                  ["O", EMPTY, "O"],
                                  ["X", "O", "X"]])
+
+    def test_winner_for_none(self):
+        board = [[EMPTY, "O", "X",],
+                 ["O", EMPTY, "O"],
+                 ["X", "O", "X"]]
+        self.assertEqual(winner(board), None)
+
 if __name__ == '__main__':
     unittest.main()
