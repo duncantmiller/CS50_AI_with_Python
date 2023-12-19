@@ -100,7 +100,7 @@ def shortest_path(source, target):
     for source_movie_id in source_movie_ids:
         stars = movies[source_movie_id]["stars"]
         for star_id in stars:
-            if star_id != source and star_id != target:
+            if star_id != source:
                 for star_movie_id in people[star_id]["movies"]:
                     if star_movie_id in target_movie_ids:
                         return [(source_movie_id, star_id), (star_movie_id, target)]
