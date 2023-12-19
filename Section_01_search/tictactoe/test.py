@@ -138,5 +138,11 @@ class TestPlayerFunction(unittest.TestCase):
                  ["X", "O", "X"]]
         self.assertEqual(utility(board), 0)
 
+    def test_minimax_for_terminal(self):
+        board = [["X", "O", "X",],
+                 ["O", "X", "O"],
+                 ["X", "O", "X"]]
+        self.assertEqual(minimax(board), None)
+
 if __name__ == '__main__':
     unittest.main()
