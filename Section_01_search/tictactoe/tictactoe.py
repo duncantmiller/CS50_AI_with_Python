@@ -146,41 +146,43 @@ def minimax(board):
     """
     if terminal(board):
         return None
-    max_values = {}
-    for x_action in actions(board):
-        result_board = result(board, x_action)
-        if terminal(result_board):
-            return x_action
-        max_val = True
-        for o_action in actions(result(board, x_action)):
-            if terminal(result(result(board, x_action), o_action)):
-                max_val = False
-        if max_val:
-            max_values[max_value(result_board)] = x_action
-    if len(max_values) == 0:
-        return actions(board).pop()
-    highest_value = max(max_values.keys())
-    return max_values[highest_value]
 
-def max_value(board):
+    if player(board) == X:
+        value, move = max_value(board, float("-inf"), float("inf"))
+    else:
+        value, move = min_value(board, float("-inf"), float("inf"))
+
+    return move
+
+def max_value(board, min_v, max_v):
     """
     Returns the max value of the board.
     """
     if terminal(board):
-        return utility(board)
-    max_v = float("-inf")
+        return utility(board), None
+    v = float("-inf")
+    move = None
     for action in actions(board):
-        max_v = max(max_v, min_value(result(board, action)))
-    return max_v
+        value, _ = min_value(result(board, action), min_v, max_v)
+        if value > v:
+            v = value
+            move = action
+        min_v = max(min_v, v)
+    return v, move
 
-def min_value(board):
+def min_value(board, min_v, max_v):
     """
     Returns the min value of the board.
     This is the value that the opponent will get.
     """
     if terminal(board):
-        return utility(board)
-    min_v = float("inf")
+        return utility(board), None
+    v = float("inf")
+    move = None
     for action in actions(board):
-        min_v = min(min_v, max_value(result(board, action)))
-    return min_v
+        value, _ = max_value(result(board, action), min_v, max_v)
+        if value < v:
+            v = value
+            move = action
+        max_v = min(max_v, v)
+    return v, move
