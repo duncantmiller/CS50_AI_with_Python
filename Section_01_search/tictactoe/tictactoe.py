@@ -168,6 +168,8 @@ def max_value(board, min_v, max_v):
             v = value
             move = action
         min_v = max(min_v, v)
+        if min_v >= max_v:
+            break
     return v, move
 
 def min_value(board, min_v, max_v):
@@ -185,4 +187,6 @@ def min_value(board, min_v, max_v):
             v = value
             move = action
         max_v = min(max_v, v)
+        if min_v >= max_v:
+            break
     return v, move
