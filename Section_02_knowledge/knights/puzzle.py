@@ -23,8 +23,8 @@ knowledge0 = And(
 knowledge1 = And(
     Or(AKnight, AKnave), # A is either a Knight or a Knave
     Not(And(AKnight, AKnave)), # A is not both a Knight and a Knave
-    Implication(AKnight, BKnave), # A is a Knight, then B is a Knave
-    Implication(AKnave, BKnight), # A is a Knave, then B is a Knight
+    Or(BKnight, BKnave), # B is either a Knight or a Knave
+    Not(And(BKnight, BKnave)), # B is not both a Knight and a Knave
     Biconditional(AKnight, And(BKnave, AKnave)) # B says we are both Knaves
 )
 
@@ -50,7 +50,7 @@ knowledge3 = And(
     Not(And(AKnight, AKnave)), # A is not both a Knight and a Knave
     Implication(AKnight, BKnave), # A is a Knight, then B is a Knave
     Implication(AKnave, BKnight), # A is a Knave, then B is a Knight
-    # A says either "I am a knight." or "I am a knave."
+    Biconditional(AKnight, Or(AKnave, AKnight)) # A says either "I am a knight." or "I am a knave."
     # B says "A said 'I am a knave'."
     # B says "C is a knave."
     # C says "A is a knight."
