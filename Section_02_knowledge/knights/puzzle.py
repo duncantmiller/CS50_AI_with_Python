@@ -34,8 +34,8 @@ knowledge1 = And(
 knowledge2 = And(
     Or(AKnight, AKnave), # A is either a Knight or a Knave
     Not(And(AKnight, AKnave)), # A is not both a Knight and a Knave
-    Implication(AKnight, BKnave), # A is a Knight, then B is a Knave
-    Implication(AKnave, BKnight), # A is a Knave, then B is a Knight
+    Or(BKnight, BKnave), # B is either a Knight or a Knave
+    Not(And(BKnight, BKnave)), # B is not both a Knight and a Knave
     Biconditional(AKnight, Or(And(BKnave, AKnave), And(BKnight, AKnight))), # A says "We are the same kind."
     Biconditional(BKnight, Or(And(BKnave, AKnight), And(BKnight, AKnave))) # B says "We are of different kinds."
 )
