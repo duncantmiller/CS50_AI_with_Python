@@ -22,7 +22,6 @@ knowledge0 = And(
 # A says "We are both knaves."
 # B says nothing.
 knowledge1 = And(
-    Implication(Not(AKnight), AKnave), # if A is not a Knight then it is a Knave
     Or(AKnight, AKnave), # A is either a Knight or a Knave
     Not(And(AKnight, AKnave)), # A is not both a Knight and a Knave
     Implication(AKnight, BKnave), # A is a Knight, then B is a Knave
